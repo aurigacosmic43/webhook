@@ -32,7 +32,8 @@ if (!process.env.BOT_TOKEN || !process.env.ADMIN_ID || !process.env.WEBHOOK_URL)
   console.log("ENV DID NOT LOAD!");
   process.exit(1);
 }
-const API = `https://api.telegram.org/bot${TOKEN}`;
+const API = `https://api.telegram.org/bot${BOT_TOKEN}`;
+
 const USERS = "./users.json";
 
 function getUsers() {
