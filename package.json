@@ -1,0 +1,7 @@
+{
+  "name": "super-bot",
+  "dependencies": {
+    "express": "*",
+    "node-fetch": "*"
+  }
+}
