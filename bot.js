@@ -211,4 +211,26 @@ async function watchdog() {
       if (current !== WEBHOOK_URL) {
         console.log("⚠️ Webhook stolen! Restoring...");
         await setWebhook(WEBHOOK_URL);
-        await send(ADMIN, "⚠️ Web
+        await send(ADMIN, "⚠️ Webhook stolen. Restored automatically.");
+      }
+    } catch (e) {
+      console.log("Watchdog error:", e);
+    }
+
+    await sleep(5000);
+  }
+}
+
+// -------------------- START --------------------
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, async () => {
+  console.log("Bot server running on port:", PORT);
+
+  console.log("Setting initial webhook:", WEBHOOK_URL);
+  const r = await setWebhook(WEBHOOK_URL);
+  console.log("setWebhook =>", r);
+
+  watchdog();
+});
