@@ -24,15 +24,14 @@ import express from "express";
 import fetch from "node-fetch";
 import fs from "fs";
 
-const TOKEN = process.env.BOT_TOKEN;
-const ADMIN = process.env.ADMIN_ID;
-const WEBHOOK_URL = process.env.WEBHOOK_URL;
+console.log("ENV BOT_TOKEN:", process.env.BOT_TOKEN);
+console.log("ENV ADMIN_ID:", process.env.ADMIN_ID);
+console.log("ENV WEBHOOK_URL:", process.env.WEBHOOK_URL);
 
-if (!TOKEN || !ADMIN || !WEBHOOK_URL) {
-  console.log("Missing ENV: BOT_TOKEN, ADMIN_ID, WEBHOOK_URL");
+if (!process.env.BOT_TOKEN || !process.env.ADMIN_ID || !process.env.WEBHOOK_URL) {
+  console.log("ENV DID NOT LOAD!");
   process.exit(1);
 }
-
 const API = `https://api.telegram.org/bot${TOKEN}`;
 const USERS = "./users.json";
 
